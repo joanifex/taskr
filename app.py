@@ -1,6 +1,5 @@
 from flask import Flask, render_template, redirect, request
 app = Flask(__name__)
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 tasks = []
 @app.route('/')

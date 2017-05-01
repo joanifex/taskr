@@ -6,7 +6,7 @@
   </head>
   <body>
     <div class="container">
-      <h1>Edit Task</h1>
+      <h1>{{task['name']}}</h1>
       <form action="/update/{{index}}/" method="post">
         <input type="text" name="name" value="{{ task['name']}}" required>
         <input type="date" name="date" value="{{ task['date']}}" required>

@@ -10,19 +10,24 @@
       <h2>Tasks</h2>
       <ul>
         {% for task in tasks %}
-          <li>
-            {{ task['name'] }}
-            {{ task['date'] }}
-            <form action="/delete/{{loop.index0}}/">
-              <button type="submit">Complete</button>
-            </form>
-            <a href="/update/{{loop.index0}}/">
-              <button>Edit</button>
-            </a>
+          <li class="task">
+            <div class="task-info">
+              <span>{{ task['name'] }}</span>
+              <br />
+              <span><em>Due: {{ task['date'] }}</em></span>
+            </div>
+            <div class="task-actions">
+              <form action="/delete/{{loop.index0}}/">
+                <button type="submit">Complete</button>
+              </form>
+              <a href="/update/{{loop.index0}}/">
+                <button>Edit</button>
+              </a>
+            </div>
           </li>
         {% endfor %}
       </ul>
-      <p>New Task</p>
+      <h4>Add New Task</h4>
       <form action="/create/" method="post">
         <input type="text" name="name" required>
         <input type="date" name="date" required>
