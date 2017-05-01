@@ -14,7 +14,7 @@ def delete(i):
 def main():
     tasks.append('task 1')
     tasks.append('task 2')
-    app.run('localhost', 8000, debug=False)
+    app.run('localhost', 8000, debug=True)
 
 if __name__ == '__main__':
     main()
