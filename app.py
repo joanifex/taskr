@@ -6,9 +6,14 @@ tasks = []
 def index():
     return render_template('tasks.html', tasks=tasks)
 
-@app.route('/create', methods=['POST'])
+@app.route('/create/', methods=['POST'])
 def create():
     tasks.append(request.form['task'])
+    return redirect('/')
+
+@app.route('/update/<i>/', methods=['POST'])
+def update(i):
+    tasks[int(i)] = request.form['task']
     return redirect('/')
 
 @app.route('/delete/<i>/')

@@ -8,10 +8,15 @@
         <form action="/delete/{{loop.index0}}/">
           <button type="submit" name="delete">Complete</button>
         </form>
+        <form action="/update/{{loop.index0}}/" method="post">
+          <label for="task">Update Task</label>
+          <input type="text" name="task">
+          <input type="submit" value="Update">
+        </form>
       </li>
     {% endfor %}
   </ul>
-  <form action="/create" method="post">
+  <form action="/create/" method="post">
     <label for="task">New Task</label>
     <input type="text" name="task">
     <input type="submit" value="Submit">
