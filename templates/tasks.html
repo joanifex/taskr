@@ -1,28 +1,33 @@
+<!doctype html>
 <html>
-  <h1>Welcome to Taskr</h1>
-  <h2>Tasks</h2>
-  <ul>
-    {% for task in tasks %}
-      <li>
-        Name: {{ task['name'] }}
-        <br/>
-        Due Date: {{ task['date'] }}
-        <form action="/delete/{{loop.index0}}/">
-          <button type="submit" name="delete">Complete</button>
-        </form>
-        <form action="/update/{{loop.index0}}/" method="post">
-          <label for="task">Update Task</label>
-          <input type="text" name="name" required>
-          <input type="date" name="date" value="{{ task['date']}}">
-          <button type="submit">Update</button>
-        </form>
-      </li>
-    {% endfor %}
-  </ul>
-  <form action="/create/" method="post">
-    <label for="name">New Task</label>
-    <input type="text" name="name" required>
-    <input type="date" name="date" required>
-    <button type="submit">Submit</button>
-  </form>
+  <head>
+    <title>Taskr</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to Taskr</h1>
+      <h2>Tasks</h2>
+      <ul>
+        {% for task in tasks %}
+          <li>
+            {{ task['name'] }}
+            {{ task['date'] }}
+            <form action="/delete/{{loop.index0}}/">
+              <button type="submit">Complete</button>
+            </form>
+            <a href="/update/{{loop.index0}}/">
+              <button>Edit</button>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+      <p>New Task</p>
+      <form action="/create/" method="post">
+        <input type="text" name="name" required>
+        <input type="date" name="date" required>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
 </html>
