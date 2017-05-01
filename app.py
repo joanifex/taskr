@@ -8,12 +8,16 @@ def index():
 
 @app.route('/create/', methods=['POST'])
 def create():
-    tasks.append(request.form['task'])
+    name = request.form['name']
+    date = request.form['date']
+    tasks.append({'name': name, 'date': date})
     return redirect('/')
 
 @app.route('/update/<i>/', methods=['POST'])
 def update(i):
-    tasks[int(i)] = request.form['task']
+    name = request.form['name']
+    date = request.form['date']
+    tasks[int(i)] = {'name': name, 'date': date}
     return redirect('/')
 
 @app.route('/delete/<i>/')
@@ -22,8 +26,8 @@ def delete(i):
     return redirect('/')
 
 def main():
-    tasks.append('task 1')
-    tasks.append('task 2')
+    tasks.append({'name': 'task 1', 'date': '2017-5-01'})
+    tasks.append({'name': 'task 2', 'date': '2017-5-01'})
     app.run('localhost', 8000, debug=True)
 
 if __name__ == '__main__':
