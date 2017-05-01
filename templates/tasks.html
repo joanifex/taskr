@@ -11,4 +11,9 @@
       </li>
     {% endfor %}
   </ul>
+  <form action="/create" method="post">
+    <label for="task">New Task</label>
+    <input type="text" name="task">
+    <input type="submit" value="Submit">
+  </form>
 </html>

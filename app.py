@@ -1,10 +1,15 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request
 app = Flask(__name__)
 
 tasks = []
 @app.route('/')
 def index():
     return render_template('tasks.html', tasks=tasks)
+
+@app.route('/create', methods=['POST'])
+def create():
+    tasks.append(request.form['task'])
+    return redirect('/')
 
 @app.route('/delete/<i>/')
 def delete(i):
